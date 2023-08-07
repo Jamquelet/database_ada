@@ -1,2 +1,1 @@
-# python_ada_base
-formación en ciencia de datos base
+# Formación en bases de datos
