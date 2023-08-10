@@ -70,3 +70,25 @@ SELECT DISTINCT nombre --otra forma de escribir el query >= 20 y < 30
 FROM personas
 WHERE edad BETWEEN 20 AND 29;--between especifico entre numeros
 
+
+--Otro ejemplo
+CREATE TABLE agents (
+	'agent_code' TEXT NOT NULL PRIMARY KEY,
+	'agent_name' TEXT,
+	'workin_area' TEXT,
+	'commision' INT,
+	'phone_no' TEXT,
+	'country' TEXT
+);
+INSERT INTO agents VALUES('A007','Ramasonder','Bangalore', '0.15','1123.213121', 'Bolivia'); 
+INSERT INTO agents VALUES('A003','Alex','London', '0.13','0023.213255', 'Peru'); 
+INSERT INTO agents VALUES('A008','Alford','New York', '0.12','0599.213121', 'Chile'); 
+INSERT INTO agents VALUES('A011','Ravi Kumar','Chennai', '0.15','4563.2871', 'Canada'); 
+INSERT INTO agents VALUES('A010','Santakumar','Bangalore', '0.14','0123.9874', 'USA'); 
+INSERT INTO agents VALUES('A005','Lucia','San José', '0.12','0323.213121', 'Colombia'); 
+INSERT INTO agents VALUES('A001','Anderson','Brisban', '0.13','0983.213121', 'Ecuador'); 
+INSERT INTO agents VALUES('A002','Subbarao','Mumbai', '0.14','0113.213121', 'Bolivia'); 
+INSERT INTO agents VALUES('A006','Mukesh','Torento', '0.11','2223.213121', 'Colombia'); 
+INSERT INTO agents VALUES('A004','McDen','Bangalore', '0.15','3323.213121', 'USA'); 
+INSERT INTO agents VALUES('A009','Ivan','London', '0.15','4423.213121', 'Chile'); 
+INSERT INTO agents VALUES('A012','Benjamin','Bogota', '0.11','5523.213121', 'Mexico'); 
