@@ -71,6 +71,7 @@ FROM personas
 WHERE edad BETWEEN 20 AND 29;--between especifico entre numeros
 
 
+
 --Otro ejemplo
 CREATE TABLE agents (
 	'agent_code' TEXT NOT NULL PRIMARY KEY,
@@ -92,3 +93,8 @@ INSERT INTO agents VALUES('A006','Mukesh','Torento', '0.11','2223.213121', 'Colo
 INSERT INTO agents VALUES('A004','McDen','Bangalore', '0.15','3323.213121', 'USA'); 
 INSERT INTO agents VALUES('A009','Ivan','London', '0.15','4423.213121', 'Chile'); 
 INSERT INTO agents VALUES('A012','Benjamin','Bogota', '0.11','5523.213121', 'Mexico'); 
+
+--muestra donde trabaja alex
+SELECT DISTINCT workin_area
+FROM agents
+WHERE agent_name = 'Alex';
