@@ -8,6 +8,13 @@
 --click derecho sobre la db editor sql, open sql console
 
 --Crear tabla
+
+CREATE TABLE usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT,
+    edad INTEGER
+);
+
 CREATE TABLE personas (
 	ID INTEGER PRIMARY KEY NOT NULL,
 	nombre TEXT,
