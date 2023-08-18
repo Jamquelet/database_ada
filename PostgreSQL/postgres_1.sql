@@ -1,4 +1,6 @@
---Transacciones ACID = Atomicidad (Atomicity) - Consistencia (Consistency) - Aislamiento (Isolation) - Durabilidad (Durability)
+--standard query lenguaje SQL
+--postgresqltutorial.com
+--Transacciones ACID = Atomicidad (Atomicity): Unidad indivisible - Consistencia (Consistency): estado valido a estado valido - Aislamiento (Isolation): transacciones no interfieren entre si - Durabilidad (Durability): cambios persistean incluso en fallas
 
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY, --autoincrementable PK
@@ -61,15 +63,17 @@ CREATE TABLE clientes (
 
 CREATE TABLE pedidos (
     id SERIAL PRIMARY KEY,
-    fecha_pedido DATE, --almacenar fechas
-    total NUMERIC(10, 2)
+    fecha_pedido DATE, --almacenar fechas-- año mes dia
+    total NUMERIC(10, 2)--cuantos numeros antes de la coma soporta, y cuantos numeros despues de la coma soporta, el precio no va a exceder 10 numeros antes de la coma y no va a exceder 2 numeros despues de la coma
 );
 
 CREATE TABLE registros (
     id SERIAL PRIMARY KEY,
-    fecha_hora TIMESTAMP, --almacenar fechas y horas exacta
+    fecha_hora TIMESTAMP, --almacenar fechas y horas exacta --unixtimestamp.com
     valor FLOAT
 );
+
+--Actualizacion de datos
 
 UPDATE nombre_tabla --cambiar valores en una tabla, se utiliza la instrucción UPDATE, esta permite actualizar uno o más campos de uno o varios registros en función de una condición específica
 SET columna1 = valor1, columna2 = valor2, ...
@@ -78,6 +82,8 @@ WHERE condicion; --Si no se proporciona ninguna condición, la actualización se
 UPDATE empleados --aumentar el salario de todos los empleados mayores de 30 años en un 10%
 SET salario = salario * 1.1 
 WHERE edad > 30;
+
+--Eliminacion de datos
 
 DELETE FROM nombre_tabla --Cuando se requiere eliminar filas de una tabla dada una condición
 WHERE condicion; --Si no se proporciona ninguna condición, se eliminarán todos los registros de la tabla.
