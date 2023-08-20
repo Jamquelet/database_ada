@@ -91,5 +91,34 @@ WHERE condicion; --Si no se proporciona ninguna condición, se eliminarán todos
 DELETE FROM empleados
 WHERE salario < 1000;--eliminar todos los empleados cuyo salario sea menor de 1000
 
+--db lab 3
 
+CREATE TABLE productos(
+    id serial PRIMARY KEY,
+    nombre varchar(50),
+    categoria varchar(50),
+    precio decimal(10,2),
+    cantidad integer
+);
 
+INSERT INTO productos (id, nombre, categoria, precio, cantidad) VALUES
+(1, 'Camiseta', 'Ropa', 19.99, 50),
+(2, 'Zapatos', 'Calzado', 59.99, 20),
+(3, 'Pantalón', 'Ropa', 29.99, 30),
+(4,	'Gorra', 'Accesorios', 9.99, 100),
+(5,	'Bufanda',	'Accesorios', 14.99, 40),
+(6,	'Vaso',	'Hogar', 4.99,	80),
+(7,	'Libreta', 'Papelería',	2.99, 120),
+(8,	'Reloj', 'Accesorios', 39.99, 15),
+(9,	'Juguete', 'Infantil',	12.99, 70),
+(10, 'Bolso', 'Accesorios', 24.99, 25);
+
+SELECT nombre, precio FROM productos WHERE categoria = 'Accesorios' and precio >= 20;
+
+SELECT nombre, cantidad FROM productos WHERE cantidad <= 50;
+
+UPDATE productos 
+SET cantidad = cantidad + 10
+WHERE categoria = 'Ropa';
+
+DELETE FROM productos WHERE precio < 10;
