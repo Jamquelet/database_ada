@@ -25,9 +25,10 @@ SELECT * FROM usuarios WHERE edad != 42;
 
 select * from usuarios where edad in (28, 35, 22);('María', 42),
 
-select * from usuarios where nombre like '%sof%'; --contiene una subcadena
+select nombre from usuarios where nombre like '%sof%'; --contiene una subcadena
+select * from usuarios where nombre like '%ar%';
 
-select * from usuarios where nombre like 'Mari_';
+select nombre from usuarios where nombre like 'Mari_'; -- un solo caracter
 
 --Tabla Empleados
 
@@ -50,7 +51,19 @@ insert into empleados (id,nombre,edad,salario) values
 (9, 'Miguel', 27, 27000),
 (10, 'Valentina', 29, 29000);
 
-select nombre from empleados where edad 
+select nombre from empleados where edad > 30;
+
+select * from empleados;
+
+--actualizar
 
 update empleados
-set salario = salar
+set salario = salario * 1.1 --aumentar en un 10 %
+where edad > 30;
+
+--eliminación
+
+select * from empleados where salario > 30000;
+
+delete from empleados 
+where salario > 30000;

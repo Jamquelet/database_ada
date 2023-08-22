@@ -32,5 +32,24 @@ ORDER BY apellido DESC;
 SELECT nombre, apellido, edad FROM estudiantes
 ORDER BY apellido ASC, edad DESC;--se ordenarán primero por el campo "apellido" en orden ascendente, y si hay registros con el mismo apellido, se ordenarán por el campo "edad" en orden descendente.
 
+----------------------------------------------------------------
 
+--Agregaciones 
 
+/* En SQL, una agregación se refiere a la operación de combinar múltiples filas de una tabla para calcular un único valor resumido o estadística sobre esos datos. Las agregaciones son utilizadas con frecuencia para obtener información como el total, el promedio, el máximo, el mínimo o la cuenta de un conjunto de valores.
+
+Las agregaciones se realizan utilizando funciones de agregación específicas que están disponibles en SQL. Algunas de las funciones de agregación más comunes son:
+
+- SUM: Calcula la suma de los valores en una columna numérica.
+- AVG: Calcula el promedio de los valores en una columna numérica.
+- MAX: Obtiene el valor máximo de una columna.
+- MIN: Obtiene el valor mínimo de una columna.
+- COUNT: Cuenta el número de filas en una columna.
+
+Estas funciones de agregación se aplican a un conjunto de filas seleccionadas mediante una cláusula WHERE u otra cláusula de filtrado, y el resultado es un único valor que representa la agregación de los datos seleccionados.
+
+Por ejemplo, supongamos que tenemos una tabla llamada "Ventas" con las columnas "Producto" y "Cantidad" que registra las ventas diarias de diferentes productos. Si queremos calcular el total de ventas de todos los productos, podríamos utilizar la función de agregación SUM de la siguiente manera: */
+
+SELECT SUM(Cantidad) AS TotalVentas FROM Ventas;
+
+--Esto devolvería un único valor que representa la suma de todas las cantidades de venta en la tabla "Ventas". En este caso, la columna resultante se llamaría "TotalVentas".
