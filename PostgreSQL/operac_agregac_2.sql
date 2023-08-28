@@ -1,7 +1,11 @@
 --Operaciones y agregaciones 
 --queries avanzadas sobre una tabla
+--orden de escritura de operaciones en consulta sql: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+
 
 ----------------------------------------------------------------
+
+
 --Limitando resultados:
 --LIMIT y OFFSET son cláusulas que se utilizan en una consulta SQL para controlar el número de filas que se devuelven y desde qué posición se empieza a devolver en el conjunto de resultados.
 
@@ -14,7 +18,10 @@ SELECT * FROM tabla OFFSET 20;--La consulta devolverá todas las filas de la tab
 --se puede controlar tanto el número de filas a devolver como la posición de inicio
 SELECT * FROM tabla OFFSET 10 LIMIT 5;--Esta consulta devolverá 5 filas de la tabla, comenzando desde la posición 11. En otras palabras, se saltarán las primeras 10 filas y se mostrarán las siguientes 5.
 
+
 ----------------------------------------------------------------
+
+
 --Ordenando resultados
 --ORDER BY se utiliza en una consulta SQL para ordenar los resultados en función de uno o varios campos de una tabla.
 
@@ -32,7 +39,9 @@ ORDER BY apellido DESC;
 SELECT nombre, apellido, edad FROM estudiantes
 ORDER BY apellido ASC, edad DESC;--se ordenarán primero por el campo "apellido" en orden ascendente, y si hay registros con el mismo apellido, se ordenarán por el campo "edad" en orden descendente.
 
+
 ----------------------------------------------------------------
+
 
 --Agregaciones 
 
@@ -54,7 +63,9 @@ SELECT SUM(Cantidad) AS TotalVentas FROM Ventas;
 
 --Esto devolvería un único valor que representa la suma de todas las cantidades de venta en la tabla "Ventas". En este caso, la columna resultante se llamaría "TotalVentas".
 
+
 ----------------------------------------------------------------
+
 
 --Agregaciones sobre grupos
 /* Cuando necesitamos agrupar filas en categorías específicas y calcular agregaciones sobre cada grupo, se utiliza la instrucción GROUP BY. Esto nos permite realizar cálculos y resúmenes de datos más específicos y segmentados.
@@ -74,6 +85,9 @@ GROUP BY producto, fecha;
 --Esto agrupará las filas por cada combinación única de valores en las columnas "Producto" y "Fecha" y calculará la suma de la cantidad para cada grupo.
 --Al utilizar el GROUP BY, es importante tener en cuenta que solo se pueden incluir en la cláusula SELECT las columnas utilizadas en el GROUP BY o funciones de agregación aplicadas a otras columnas. Esto se debe a que el GROUP BY define las categorías de agrupación y, por lo tanto, las columnas en el resultado deben ser coherentes con las columnas utilizadas para agrupar.
 
+----------------------------------------------------------------
+
+
 --Filtrando luego de una agregación
 /* Si intentamos filtrar luego de agrupar con GROUP BY, tenemos que utilizar la clausula HAVING.
 
@@ -92,3 +106,41 @@ SELECT producto, SUM(cantidad) AS total_ventas
 FROM ventas
 GROUP BY producto
 HAVING SUM(cantidad) > 100;
+
+
+------------------------------------------------------------------------------------------------
+
+--Orden de ejecución de operaciones
+--Cuando realizamos una consulta SQL, el orden de ejecución no es necesariamente el mismo del orden de escritura.
+SELECT DISTINCT 
+  columna, AGG_FUNC(columna_o_expression), ...
+FROM
+  tabla T JOIN otra_tabla O ON T.columna = O.column
+WHERE 
+  condición
+GROUP BY 
+  columna
+HAVING 
+  condición
+ORDER BY 
+  columna ASC/DESC
+LIMIT n OFFSET m;
+
+--1. FROM: especifica la(s) tabla(s) de la(s) cual(es) se seleccionarán los datos. En esta etapa, se determina la fuente de datos de la consulta.
+
+--2. JOIN: Si hay cláusulas JOIN en la consulta, se realiza la combinación de las tablas especificadas en función de las condiciones de unión. Esto combina las filas relacionadas de diferentes tablas en una sola fila virtual.
+
+--3. WHERE: Se utiliza para filtrar las filas que cumplan con una condición especificada. En esta etapa, se aplican las condiciones de filtrado para determinar qué filas serán seleccionadas.
+
+--4. GROUP BY: Si hay una cláusula GROUP BY en la consulta, se agrupan las filas en conjuntos basados en los valores de las columnas especificadas. Las funciones de agregación, como SUM o COUNT, se aplicarán a los grupos resultantes.
+
+--5. HAVING: Si hay una cláusula HAVING en la consulta (junto con GROUP BY), se aplican condiciones de filtrado a los grupos generados por el paso anterior. Sólo los grupos que cumplan con las condiciones especificadas serán incluidos en el resultado final.
+
+--6. SELECT: En esta etapa, se seleccionan las columnas específicas que se mostrarán en el resultado. Las funciones de agregación también se pueden utilizar en esta etapa para calcular valores resumidos.
+
+--7. DISTINCT: Si hay una cláusula DISTINCT en la consulta, se eliminan las filas duplicadas del resultado. Solo se muestra una única instancia de cada combinación única de valores.
+
+--8. ORDER BY: Si hay una cláusula ORDER BY en la consulta, se ordenan los resultados en función de las columnas especificadas y el criterio de ordenamiento (ascendente o descendente).
+
+--9. LIMIT/OFFSET: Si se utiliza LIMIT u OFFSET, se aplica la limitación del número de filas que se mostrarán en el resultado y se desplazan las filas según el offset especificado.
+

@@ -1,3 +1,5 @@
+--~sudo su - postgres  ~psql ~\l ~CREATE DATABASE namedb; ~\q
+
 create table usuarios(
     id serial PRIMARY KEY, 
     nombre VARCHAR(50),
