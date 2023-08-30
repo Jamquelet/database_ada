@@ -144,3 +144,40 @@ LIMIT n OFFSET m;
 
 --9. LIMIT/OFFSET: Si se utiliza LIMIT u OFFSET, se aplica la limitación del número de filas que se mostrarán en el resultado y se desplazan las filas según el offset especificado.
 
+
+--db-lab-4
+
+
+create table estudiantes(
+	nombre VARCHAR(255),
+	edad INTEGER,
+	puntuacion DECIMAL(10, 2)	
+);
+
+insert into estudiantes (nombre, edad, puntuacion) values 
+('Estudiante1', 20, 85.5),
+('Estudiante2', 21, 75.0),
+('Estudiante3', 19, 92.5),
+('Estudiante4', 22, 80.2),
+('Estudiante5', 20, 88.9),
+('Estudiante6', 21, 76.8),
+('Estudiante7', 19, 94.2),
+('Estudiante8', 22, 82.1),
+('Estudiante9', 20, 87.3),
+('Estudiante10', 21, 77.6);
+
+--Realiza una consulta para obtener la puntuación promedio de los estudiantes mayores de 20 años.
+select avg(puntuacion) as promedio_puntuacion from estudiantes where edad > 20
+
+--Realiza una consulta para obtener el nombre de los estudiantes cuya puntuación sea mayor a 85 
+--y la edad sea menor a 22.
+select nombre from estudiantes where puntuacion > 85 and edad < 22
+
+--Realiza una consulta para obtener la edad y la cantidad de estudiantes por cada edad. 
+--Ordena los resultados por edad de forma descendente.
+select edad, count(*) as cantidad_estudiantes from estudiantes group by edad order by edad desc;
+
+--Realiza una consulta para obtener la edad promedio de los estudiantes que tienen una
+-- puntuación mayor a 80, redondea el resultado a dos decimales con ROUND(<promedio>, 2), 
+--dónde <promedio> corresponde al valor promedio calculado en tu sentencia SELECT.
+select round(avg(edad),2) as edad_promedio from estudiantes where puntuacion > 80;
