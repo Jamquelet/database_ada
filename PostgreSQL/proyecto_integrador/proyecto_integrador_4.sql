@@ -166,3 +166,15 @@ insert into Items(id, orden_id, producto_id, cantidad, monto_venta) values
 (67, 14, 4, 7, 490),
 (71, 15, 9, 6, 150),
 (72, 15, 5, 9, 270);
+
+
+--Obtener el precio mínimo, precio máximo y precio promedio de todos los productos.
+select min(precio_unitario) as precio_minimo, 
+max(precio_unitario) as precio_maximo,
+avg(precio_unitario) as promedio
+from productos
+
+
+--Calcular la cantidad total de productos en stock por sucursal.
+
+--Obtener el total de ventas por cliente.
