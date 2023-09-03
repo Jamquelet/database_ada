@@ -19,9 +19,10 @@ create table Sucursales (
 
 create table Stocks(
 	id serial primary key,
-	sucursal_id INTEGER unique,
-	producto_id INTEGER unique,
-	cantidad INTEGER
+	sucursal_id INTEGER,
+	producto_id INTEGER,
+	cantidad INTEGER,
+	unique (sucursal_id, producto_id)
 );
 
 create table Clientes(
@@ -169,12 +170,52 @@ insert into Items(id, orden_id, producto_id, cantidad, monto_venta) values
 
 
 --Obtener el precio mínimo, precio máximo y precio promedio de todos los productos.
-select min(precio_unitario) as precio_minimo, 
+select
+min(precio_unitario) as precio_minimo, 
 max(precio_unitario) as precio_maximo,
 avg(precio_unitario) as promedio
 from productos
 
 
 --Calcular la cantidad total de productos en stock por sucursal.
+select S.sucursal_id, sum(S.cantidad) AS cantidad_total
+from Stocks S
+group by S.sucursal_id;
 
---Obtener el total de ventas por cliente.
+/* SELECT s.sucursal_id, s.nombre AS sucursal, SUM(st.cantidad) AS total_productos_en_stock
+FROM Sucursales s
+LEFT JOIN Stocks st ON s.id = st.sucursal_id
+GROUP BY s.sucursal_id, s.nombre;
+
+SELECT s.sucursal_id, s.nombre AS sucursal, SUM(st.cantidad) AS total_productos_en_stock: Esta parte selecciona la columna sucursal_id de la tabla Sucursales y la renombra como sucursal, y calcula la suma de la columna cantidad de la tabla Stocks, que representa la cantidad de productos en stock.
+
+FROM Sucursales s: Esto indica que estamos seleccionando datos de la tabla Sucursales y la llamamos s como un alias.
+
+LEFT JOIN Stocks st ON s.id = st.sucursal_id: Realiza una unión izquierda (LEFT JOIN) entre la tabla Sucursales (s) y la tabla Stocks (st) utilizando la columna id de la sucursal en Sucursales y sucursal_id en Stocks.
+
+GROUP BY s.sucursal_id, s.nombre: Agrupa los resultados por sucursal_id y nombre de la sucursal, de modo que obtendrás la suma de productos en stock por cada sucursal.
+ */
+ 
+
+--Obtener el total de ventas por cliente. 
+
+--unir las tablas "Clientes," "Ordenes," y "Items," y luego calcular la suma de los montos de venta.
+/* Selecciona el ID del cliente y su nombre desde la tabla "Clientes."
+Luego, se realiza una unión (JOIN) con la tabla "Ordenes" usando el ID del cliente.
+Después, se une la tabla "Items" usando el ID de la orden.
+Finalmente, se agrupan los resultados por ID de cliente y se calcula la suma de los montos de venta para cada cliente. Esto te dará el total de ventas por cliente. */
+SELECT c.id AS cliente_id, c.nombre AS nombre_cliente, SUM(i.monto_venta) AS total_ventas
+FROM Clientes c
+JOIN Ordenes o ON c.id = o.cliente_id
+JOIN Items i ON o.id = i.orden_id
+GROUP BY c.id, c.nombre;
+
+/* SELECT c.id AS cliente_id, c.nombre AS nombre_cliente, SUM(i.monto_venta) AS total_ventas: Esta parte selecciona el ID del cliente y su nombre desde la tabla "Clientes" y calcula la suma de los montos de venta desde la tabla "Items" para cada cliente.
+
+FROM Clientes c: Indica que estamos seleccionando datos de la tabla "Clientes" y la llamamos c como alias.
+
+JOIN Ordenes o ON c.id = o.cliente_id: Realiza una unión entre las tablas "Clientes" y "Ordenes" utilizando el ID del cliente.
+
+JOIN Items i ON o.id = i.orden_id: Luego, se une la tabla "Items" utilizando el ID de la orden.
+
+GROUP BY c.id, c.nombre: Agrupa los resultados por ID de cliente y nombre del cliente, de modo que obtendrás el total de ventas por cada cliente. */
