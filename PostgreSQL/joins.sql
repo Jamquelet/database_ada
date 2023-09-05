@@ -249,3 +249,57 @@ WHERE v.id_cliente = (
   LIMIT 1
 );
 --Esta consulta utiliza una subconsulta para obtener el ID del cliente que gastó más. Luego, se une la tabla "Productos" con la tabla "Venta" y se filtra por el cliente obtenido en la subconsulta. Esto devolverá la lista de productos comprados por la persona que más gastó.
+
+----------------------------------------------------------------
+
+
+create table Clientes (
+id serial primary key,
+nombre varchar(50)
+);
+insert into Clientes (id, nombre) values 
+(1,	'Juan Pérez'),
+(2,	'María López'),
+(3,	'Carlos Gómez'),
+(4,	'Laura Ramírez'),
+(5,	'Andrés Torres');
+
+create table Productos (
+  id serial primary key,
+  nombre varchar(50)
+);
+
+insert into Productos (id,	nombre) values
+(1,	'Camisa'),
+(2,	'Pantalón'),
+(3,	'Zapatos'),
+(4, 'Bolso'),
+(5, 'Reloj'),
+(6, 'Bufanda');
+
+create table Venta (
+  id serial primary key,
+  id_cliente integer,
+  id_producto integer,
+  monto integer,
+  date timestamp,
+  constraint fk_cliente foreign key (id_cliente) references Clientes(id);
+  constraint fk_producto foreign key (id_producto) references Productos(id);
+);
+
+insert into Venta (id,	id_cliente,	id_producto,	monto,	date) values
+(1,	1,	3,	50.00,	'2023-06-01 10:15'),
+(2,	2,	2,	35.50,	'2023-06-02 14:20'),
+(3,	3	,1,	20.00,	'2023-06-03 12:45'),
+4,	4,	5,	80.00,	'2023-06-04 16:30'),
+5	,5,	4,	45.50,	'2023-06-05 09:10'),
+6,	1,	6,	15.00,	'2023-06-06 11:25'),
+7,	2, 3,	50.00,	'2023-06-07 13:40'),
+8,	3,	4,	40.00,	'2023-06-08 15:55'),
+9,	4,	1	,25.00,	'2023-06-09 17:00'),
+10,	5,	2,	30.50,	'2023-06-10 08:45'),
+11,	1,	5	,70.00,	'2023-06-11 10:20'),
+12,	2,	6	,18.00,	'2023-06-11 12:35'),
+13,	3,	3	,45.00,	'2023-06-11 14:50'),
+14,	4,	4	,60.00,	'2023-06-11 17:05'),
+15,	5,	1	,22.50,	'2023-06-11 19:30'); 

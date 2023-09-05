@@ -83,3 +83,55 @@ Tabla "Inscripciones":
 - ID_Curso (clave foránea referenciando a la tabla "Cursos")
 - Otros atributos relacionados con la inscripción
  */
+
+create table if not exist students (
+  id serial primary key,
+  name varchar(50)--varchar nombres peq, text codigo,mucho contenido
+ );
+
+ create table if not exist course (
+  id serial primary key,
+  nombre varchar(50)
+ );
+
+ create table if not exist inscription (
+  id_student integer,
+  id_course integer
+ );
+
+ ----------------------------------------------------------------
+
+alter table inscription add column id serial primary key;
+
+alter table inscription add column approved boolean;
+
+alter table inscription add constraint ut_student_course unique(id_student, id_course);
+
+alter table inscription add constraint fk_student foreign key (id_student) references students(id);
+
+alter table inscription add constraint fk_course foreign key (id_course) references course(id); 
+
+----------------------------------------------------------------
+
+alter table students add column age integer;
+
+insert into students (id, name, age) values
+(1,'Juan', 20),
+(2,'Maria', 22),
+(3,'Carlos', 21);
+
+insert into course (id, name) values
+(1, 'mathematics'),
+(2, 'history'),
+(3, 'science');
+
+insert into inscription () values 
+(1,1,1, true),
+(2,1,2, false),
+(3,2,1, false),
+(4,2,3 true),
+(5,3,2 false);
+
+--Multiples joins
+
+
