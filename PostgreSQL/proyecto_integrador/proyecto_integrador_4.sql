@@ -219,3 +219,50 @@ JOIN Ordenes o ON c.id = o.cliente_id: Realiza una unión entre las tablas "Clie
 JOIN Items i ON o.id = i.orden_id: Luego, se une la tabla "Items" utilizando el ID de la orden.
 
 GROUP BY c.id, c.nombre: Agrupa los resultados por ID de cliente y nombre del cliente, de modo que obtendrás el total de ventas por cada cliente. */
+
+----------------------------------------------------------------
+
+--agregar las restricciones de llave foránea faltantes a las tablas
+
+--Producto -> Categoria
+ALTER TABLE Productos
+ADD CONSTRAINT fk_categoria
+FOREIGN KEY (categoria_id)
+REFERENCES Categorias(id);
+
+--Stock -> Sucursal & Producto
+ALTER TABLE Stocks
+ADD CONSTRAINT fk_sucursal
+FOREIGN KEY (sucursal_id)
+REFERENCES Sucursales(id);
+
+ALTER TABLE Stocks
+ADD CONSTRAINT fk_producto
+FOREIGN KEY (producto_id)
+REFERENCES Producto(id);
+
+
+--Orden -> Cliente & Sucursal
+ALTER TABLE Ordenes
+ADD CONSTRAINT fk_cliente
+FOREIGN KEY (cliente_id)
+REFERENCES Clientes(id);
+
+ALTER TABLE Ordenes
+ADD CONSTRAINT fk_sucursal
+FOREIGN KEY (sucursal_id)
+REFERENCES Sucursales(id);
+
+
+--Item -> Orden & Producto 
+ALTER TABLE Items
+ADD CONSTRAINT fk_producto
+FOREIGN KEY (producto_id)
+REFERENCES Productos(id);
+
+ALTER TABLE Items
+ADD CONSTRAINT fk_orden
+FOREIGN KEY (orden_id)
+REFERENCES Ordenes(id);
+
+
