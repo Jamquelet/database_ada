@@ -91,7 +91,7 @@ create table if not exist students (
 
  create table if not exist course (
   id serial primary key,
-  nombre varchar(50)
+  name varchar(50)
  );
 
  create table if not exist inscription (
@@ -133,5 +133,11 @@ insert into inscription () values
 (5,3,2 false);
 
 --Multiples joins
+--obtener la lista de materias en las que Maria reprobó
 
+select c.name
+from students s
+join inscriptions i on s.id = i.id_student
+join course c on c.id = i.id_course
+where s.name = 'Maria' and approved = false;
 
