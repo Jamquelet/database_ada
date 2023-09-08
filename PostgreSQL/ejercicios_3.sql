@@ -74,3 +74,24 @@ Customer with id = 30 visited the mall once and did not make any transactions.
 Customer with id = 54 visited the mall three times. During 2 visits they did not make any transactions, and during one visit they made 3 transactions.
 Customer with id = 96 visited the mall once and did not make any transactions.
 As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. Also, user 54 visited the mall twice and did not make any transactions. */
+
+select v.customer_id, count(*) as count_no_trans
+from visits v 
+left join transactions t on v.visit_id = t.visit_id
+where transaction_id is null
+group by v.customer_id
+
+--subconsulta del from con un join
+
+select customer.name, counts.count_no_trans
+from customer
+join (
+select v.customer_id, count(*) as count_no_trans
+from visits v 
+left join transactions t on v.visit_id = t.visit_id
+where transaction_id is null
+group by v.customer_id
+) counts on customer_id = counts.customer_id
+
+--Common table expression
+--postgres tutorial
