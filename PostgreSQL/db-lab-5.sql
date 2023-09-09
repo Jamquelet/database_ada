@@ -75,10 +75,47 @@ INNER JOIN
 ----------------------------------------------------------------
 
 --Calcular el total de ventas por cliente
+/* select c.id as cliente_id, c.nombre as nombre_cliente, sum(o.total) as total_ventas
+from clientes c 
+join ordenes o on c.id = o.cliente_id 
+group by c.id, c.nombre 
+order by total desc;
+ */
+select c.nombre as nombre_cliente, sum(o.total) as total_ventas
+from clientes c 
+join ordenes o on c.id = o.cliente_id 
+group by c.nombre 
+order by total_ventas asc;
+----------------------------------------------------------------
+
+--Obtener el nombre del cliente y la cantidad de opiniones que ha realizado
+
+select c.nombre as nombre_cliente, count(o.opinion) as nro_opiniones
+from opiniones o 
+join clientes c  on o.cliente_id = c.id
+group by c.nombre
+order by c.nombre desc;
 
 
 ----------------------------------------------------------------
+--Obtener el nombre del producto y el número de opiniones recibidas, ordenados de forma ascendente por el número de opiniones
+/* select p.nombre as nombre_producto, count(o.opinion) as nro_opiniones
+from opiniones o 
+join productos p on o.producto_id = p.id 
+group by p.nombre 
+order by opiniones_recibidas asc; */
 
+SELECT
+    P.nombre AS nombre_producto,
+    COUNT(O.id) AS numero_opiniones
+FROM
+    Productos AS P
+LEFT JOIN
+    Opiniones AS O ON P.id = O.producto_id
+GROUP BY
+    P.id, P.nombre 
+ORDER BY
+    nombre_producto, numero_opiniones ASC;
 /* Tabla Clientes:
 
 id	nombre	direccion	email
@@ -107,6 +144,4 @@ Escribe las queries (en los archivos .sql) para realizar lo siguiente:
 
 Crear las tablas
 Insertar los datos
-
-Obtener el nombre del cliente y la cantidad de opiniones que ha realizado
-Obtener el nombre del producto y el número de opiniones recibidas, ordenados de forma ascendente por el número de opiniones */
+ */
