@@ -27,6 +27,8 @@ run_async(main())
 
 """  hemos definido una clase de modelo User que representa una tabla en la base de datos. Luego, utilizamos Tortoise.init() para configurar la conexión a la base de datos SQLite (db.sqlite3 en este caso) y especificamos la ubicación del archivo de base de datos en la URL. Finalmente, ejecutamos Tortoise.generate_schemas() para generar los esquemas de la base de datos basados en los modelos definidos. """
 
+'----------------------------------------------------------------'
+
 """ Configuración para PostgreSQL
 Para utilizar Tortoise ORM con PostgreSQL, necesitarás tener el módulo asyncpg instalado. Puedes instalarlo ejecutando el siguiente comando:
 pip install asyncpg """
