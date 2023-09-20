@@ -133,8 +133,8 @@ async def get_distinct_buyers(product_name):
 async def get_most_sold_product():
     most_sold_product = (
         await Venta.annotate(sold_count=Count('id'))
-        .group_by('producto_id')
-        .order_by('-sold_count', 'producto__nombre')
+        .group_by('producto_id', 'producto__nombre')
+        .order_by('-sold_count')
         .first()
         .values("producto__nombre")
     )

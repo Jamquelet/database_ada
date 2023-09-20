@@ -87,7 +87,7 @@ run_async(filter_users())
 
 'Filtrar con múltiples condiciones'
 async def filter_users():
-    users = await User.filter(name='John Doe', email__contains='example.com')
+    users = await User.filter(name='John Doe', email__contains='example.com')#contiene ese correo
     for user in users:
         print(user.name, user.email)
 
@@ -101,7 +101,7 @@ run_async(filter_users())
 from tortoise.expressions import Q
 
 async def filter_users():
-    users = await User.filter(Q(name='John Doe') | Q(name='Jane Smith'))
+    users = await User.filter(Q(name='John Doe') | Q(name='Jane Smith'))#Q = o
     for user in users:
         print(user.name, user.email)
 
