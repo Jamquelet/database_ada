@@ -72,3 +72,25 @@ R// Maximizar el rendimiento y la eficiencia de las consultas
 
 ¿Cuál es uno de los pasos involucrados en la distribución de carga de trabajo para un query en una base de datos distribuida?
 R//Análisis de la consulta y determinación de los nodos relevantes """
+
+""" Representa un registro en NoSQL:
+R//Documento
+
+Representa una tabla en NoSQL
+R//Colección
+
+¿NoSQL prohibe SQL? = No
+
+¿Qué es una base de datos NoSQL?
+R//es una base de datos construida sin tablas y columnas y no usa el lenguaje estandar de consultas
+
+¿Cuál de las siguientes no es una funcionalidad de una base de datos NoSQL?
+R//Datos relacionales
+
+¿Cuál de las siguientes afirmaciones de NoSQL es verdadera?
+R//formato de datos para almacenar grandes cantidades de informacion
+
+¿Cuál de las siguientes no es una característica inmediata de NoSQL?
+R//Disponibilidad
+
+¿Cuál de las siguientes no es una base de datos NoSQL válida? = PostgresSQL """

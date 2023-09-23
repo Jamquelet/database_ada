@@ -1,3 +1,9 @@
+""" bases de datos NoSQL: https://aws.amazon.com/es/nosql/
+
+Las bases de datos NoSQL están diseñadas específicamente para modelos de datos específicos y tienen esquemas flexibles para crear aplicaciones modernas. Las bases de datos NoSQL son ampliamente reconocidas porque son fáciles de desarrollar, por su funcionalidad y el rendimiento a escala. Esta página incluye recursos que lo ayudan a comprender mejor las bases de datos NoSQL y comenzar a usarlas. """
+
+#----------------------------------------------------------------#
+
 """ Paradigmas de bases de datos
 
 Hasta ahora trabajamos con el paradigma de bases de datos más utilizado, el relacional, sin embargo existen otros seis paradigmas muy útiles:
@@ -66,7 +72,7 @@ El funcionamiento de una base de datos distribuida implica los siguientes aspect
 
 Para distribuir datos eficientemente se utilizan las Clustering columns y el concepto de Shards
 
--Clustering Columns (Columnas de Agrupación)
+-Clustering Columns (Columnas de Agrupación) -> hash
 
 En el contexto de las bases de datos de columnas anchas (wide column), las clustering columns se refieren a las columnas utilizadas para organizar y ordenar los datos dentro de una partición. Estas columnas definen el orden de las filas almacenadas dentro de una partición y determinan cómo se realizará el acceso a los datos.
 
