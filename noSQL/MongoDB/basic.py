@@ -19,6 +19,25 @@ json:  Se parece a un dict en python, contiene los valores NULL y True - False
 # ----------------------------------------------------------------#
 
 """INSTALACION 
+lsb_release -a = ubuntu 22.04
+cd ~/Descargas
+sudo dpkg -i nombre_del_archivo.deb = instalarlo con el compando dpkg
+sudo apt-get install -f = dependencias faltantes
+sudo systemctl status mongod = verificar si se esta ejecutando
+sudo systemctl start mongod = iniciar el servicio
+
+tar -zxvf mongodb-compass-<versión>-linux-x64.tar.gz = mongo compas
+
+tar -zxvf studio-3t-linux-x64.tar.gz = robo3t descomprime
+chmod +x studio-3t-linux-x64.sh = permisos de ejecucion
+./studio-3t-linux-x64.sh = ejecutar el script
+nueva conexion= mongodb://localhost
+
+
+
+
+
+
 
 -Instalar mongo db community server en tu computadora recomendada la version estable (current release): https://www.mongodb.com/try/download/community 
 -Instalar el cliente de robo 3t: https://robomongo.org/ #editor similar a dbeaber para mongo
