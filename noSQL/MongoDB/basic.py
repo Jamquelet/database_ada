@@ -1,4 +1,5 @@
-"""documentación oficial: https://www.mongodb.com/docs/manual/core/document/ 
+"""
+documentación oficial: https://www.mongodb.com/docs/manual/core/document/ 
 operaciones de CRUD en MongoDB: https://www.mongodb.com/docs/manual/crud/
 
 Qué es MongoDB?
@@ -8,6 +9,8 @@ Qué es MongoDB?
 ➢ Escalamiento: Horizontal y vertical
 
 Server -> Databases -> Collection -> Document
+
+--------------------------------
 
 json:  Se parece a un dict en python, contiene los valores NULL y True - False
 {
@@ -32,11 +35,6 @@ tar -zxvf studio-3t-linux-x64.tar.gz = robo3t descomprime
 chmod +x studio-3t-linux-x64.sh = permisos de ejecucion
 ./studio-3t-linux-x64.sh = ejecutar el script
 nueva conexion= mongodb://localhost
-
-
-
-
-
 
 
 -Instalar mongo db community server en tu computadora recomendada la version estable (current release): https://www.mongodb.com/try/download/community 
@@ -70,7 +68,9 @@ Un usuario con solo nombre.
 
 #----------------------------------------------------------------#
 
-""" ¿Qué es mongo DB?
+""" Quiz 
+
+¿Qué es mongo DB?
 R//sistema de gestión de bases de datos no relacional (NoSQL), orientado a documentos
 
 ¿En cuál formato se almacena la información en MongoDB?
@@ -92,7 +92,3 @@ R// MongoDB Community Server
  """
 
  #----------------------------------------------------------------#
-"""  ¿Qué es un clúster?: https://www.ibm.com/docs/es/was-zos/9.0.5?topic=servers-introduction-clusters
-
-Los clústeres son grupos de servidores que se gestionan juntos y participan en la gestión de carga de trabajo. Un clúster puede contener nodos o servidores de aplicaciones individuales. Un nodo suele ser un sistema físico con una dirección IP de host distinta que ejecuta uno o varios servidores de aplicaciones. Los clústeres se pueden agrupar bajo la configuración de una célula, que asocia lógicamente muchos servidores y clústeres con distintas configuraciones y aplicaciones entre sí en función de la discreción del administrador y de lo que tenga sentido en sus entornos organizativos.
-son responsables de equilibrar la carga de trabajo entre los servidores, Los servidores que forman parte de un clúster se denominan miembrosdel clúster. Cuando instala una aplicación en un clúster, la aplicación se instala automáticamente en cada miembro del clúster. Puede configurar un clúster para proporcionar equilibrio de carga de trabajo con integración de servicios o con beans controlados por mensajes en el servidor de aplicaciones. """

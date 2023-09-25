@@ -1,7 +1,16 @@
-""" MongoDB Atlas es un servicio de base de datos en la nube ofrecido por MongoDB, Inc.
+""" MongoDB Atlas 
+es un servicio de base de datos en la nube ofrecido por MongoDB, Inc.
 Ofrece una forma sencilla y escalable de hospedar y administrar bases de datos MongoDB en la nube, sin necesidad de preocuparse por la administración de servidores.
 Proporciona opciones de alta disponibilidad, copias de seguridad automatizadas y seguridad incorporada para proteger tus datos.
-Es ideal para empresas que desean aprovechar MongoDB sin la complejidad de gestionar la infraestructura de la base de datos. """
+
+Es ideal para empresas que desean aprovechar MongoDB sin la complejidad de gestionar la infraestructura de la base de datos. 
+
+
+➩ Servicio de base de datos en la nube.
+➩ Permite a los desarrolladores crear, configurar y administrar clústeres de MongoDB.
+➩ Evita tener que preocuparse por la infraestructura subyacente.
+➩ Atlas proporciona una forma conveniente de alojar y escalar bases de datos MongoDB de manera segura y confiable.
+"""
 
 
 """ Iniciando con MongoDB Atlas

@@ -49,3 +49,11 @@ MongoDB Charts: Es una herramienta para crear visualizaciones y gráficos a part
 MongoDB Realm: Anteriormente conocido como MongoDB Stitch, es una plataforma de desarrollo de aplicaciones que permite crear aplicaciones web y móviles de manera más sencilla e integrarlas con bases de datos MongoDB.
 
 Estos son algunos de los componentes y herramientas que forman parte del ecosistema de MongoDB. La elección de las herramientas específicas depende de los requisitos de tu proyecto y de tus necesidades individuales. """
+
+#----------------------------------------------------------------#
+
+""" 
+¿Qué es un clúster?: https://www.ibm.com/docs/es/was-zos/9.0.5?topic=servers-introduction-clusters
+
+Los clústeres son grupos de servidores que se gestionan juntos y participan en la gestión de carga de trabajo. Un clúster puede contener nodos o servidores de aplicaciones individuales. Un nodo suele ser un sistema físico con una dirección IP de host distinta que ejecuta uno o varios servidores de aplicaciones. Los clústeres se pueden agrupar bajo la configuración de una célula, que asocia lógicamente muchos servidores y clústeres con distintas configuraciones y aplicaciones entre sí en función de la discreción del administrador y de lo que tenga sentido en sus entornos organizativos.
+son responsables de equilibrar la carga de trabajo entre los servidores, Los servidores que forman parte de un clúster se denominan miembrosdel clúster. Cuando instala una aplicación en un clúster, la aplicación se instala automáticamente en cada miembro del clúster. Puede configurar un clúster para proporcionar equilibrio de carga de trabajo con integración de servicios o con beans controlados por mensajes en el servidor de aplicaciones. """
