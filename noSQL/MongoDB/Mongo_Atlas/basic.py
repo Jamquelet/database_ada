@@ -24,8 +24,8 @@ Crea una base de datos y un usuario para tu Cluster.
 
 Ejemplo:
 
-Debes crearte una cuenta haciendo click en Iniciar Sesión en este enlace (puedes usar tu cuenta de google)
-Describe tus objetivos de usar atlas (puede ser aprendizaje)
+-Debes crearte una cuenta haciendo click en Iniciar Sesión en este enlace (puedes usar tu cuenta de google)
+-Describe tus objetivos de usar atlas (puede ser aprendizaje)
 -Elige la versión gratuita y crear.
 -Haz click en Create User y guarda las credenciales generadas para conectarte a la db.
 -Elige ambiente local y deja la ip asignada por defecto, elige continuar. """

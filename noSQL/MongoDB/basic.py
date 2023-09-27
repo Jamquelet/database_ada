@@ -28,6 +28,8 @@ sudo dpkg -i nombre_del_archivo.deb = instalarlo con el compando dpkg
 sudo apt-get install -f = dependencias faltantes
 sudo systemctl status mongod = verificar si se esta ejecutando
 sudo systemctl start mongod = iniciar el servicio
+ sudo systemctl stop mongod 
+sudo chown -R mongodb:mongodb /var/lib/mongodb # permisos necesarios 
 
 tar -zxvf mongodb-compass-<versión>-linux-x64.tar.gz = mongo compas
 
