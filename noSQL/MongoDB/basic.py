@@ -6,7 +6,9 @@ Qué es MongoDB?
 ➢ sistema de Base de datos no relacional (NoSQL)
 ➢ Utiliza el paradigma de bases de datos basado en documentos
 ➢ Estructura de datos dinámica
-➢ Escalamiento: Horizontal y vertical
+➢ Escalamiento: 
+Horizontal: técnica utilizada para aumentar la capacidad de una aplicación distribuyendo la carga de trabajo en múltiples servidores.
+vertical: hardware
 
 Server -> Databases -> Collection -> Document
 
