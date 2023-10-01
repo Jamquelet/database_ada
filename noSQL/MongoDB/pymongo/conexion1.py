@@ -5,10 +5,10 @@
 
 #código básico para conectar con MongoDB, insertar un documento en una colección y luego consultar todos los documentos de esa colección:
 
-import pymongo
+import noSQL.MongoDB.pymongo.conexion1 as conexion1
 
 # Conexión a MongoDB (asegúrate de que la URL y el puerto sean correctos)
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+client = conexion1.MongoClient("mongodb://localhost:27017/")
 
 # Seleccionar una base de datos
 db = client["miBaseDeDatos"]

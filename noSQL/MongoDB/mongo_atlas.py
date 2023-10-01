@@ -29,3 +29,19 @@ Ejemplo:
 -Elige la versión gratuita y crear.
 -Haz click en Create User y guarda las credenciales generadas para conectarte a la db.
 -Elige ambiente local y deja la ip asignada por defecto, elige continuar. """
+
+#----------------------------------------------------------------
+
+#Mongo Compas query ---> sample_trining.zips
+""" 
+{
+    satate: "NY"
+}
+--> find 
+
+"""
+
+#----------------------------------------------------------------
+
+#MongoDb en VSCode: extensión --> MongoDB for VS Code 
+#archivo .editorconfig -> gits de nicobytes
