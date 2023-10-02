@@ -39,3 +39,71 @@ En MongoDB, las agregaciones se construyen utilizando un conjunto de operaciones
 -$skip: Salta un número determinado de documentos en una consulta.
 
  """
+
+""" 
+Consultar todos los documentos en una colección:
+db.miColeccion.find()
+
+Consultar documentos que cumplan con una condición específica:
+db.miColeccion.find({ campo: valor })
+
+----------------------------------------------------------------
+
+Operadores de Comparación:
+
+Igualdad: $eq
+Mayor que: $gt
+Menor que: $lt
+Mayor o igual que: $gte
+Menor o igual que: $lte
+No igual: $ne
+
+db.miColeccion.find({ edad: { $gte: 18, $lte: 30 } })
+
+----------------------------------------------------------------
+
+Operadores Lógicos:
+
+AND: $and
+OR: $or
+NOT: $not
+
+db.miColeccion.find({ $or: [{ edad: { $lt: 18 } }, { profesion: "Estudiante" }] })
+
+----------------------------------------------------------------
+
+Operadores de Elemento:
+
+$exists: Verificar si un campo existe en un documento.
+$type: Filtrar documentos por tipo de dato.
+
+db.miColeccion.find({ campo: { $exists: true, $type: "string" } })
+
+----------------------------------------------------------------
+
+Consultas de Texto Completo (índices de texto):
+
+$text: Realizar búsquedas de texto completo en campos indexados.
+
+db.miColeccion.find({ $text: { $search: "palabra" } })
+
+----------------------------------------------------------------
+
+Consultas Geoespaciales:
+
+Realizar consultas basadas en coordenadas geográficas utilizando operadores como $near y $geoWithin.
+
+db.miColeccion.find({ ubicacion: { $near: { $geometry: { type: "Point", coordinates: [longitud, latitud] }, $maxDistance: distanciaEnMetros } } })
+
+----------------------------------------------------------------
+
+Agregación:
+
+Utilizar el framework de agregación para realizar operaciones más complejas, como agrupar, proyectar y calcular estadísticas en documentos.
+
+db.miColeccion.aggregate([
+  { $group: { _id: "$categoria", total: { $sum: 1 } } },
+  { $sort: { total: -1 } }
+])
+
+ """
