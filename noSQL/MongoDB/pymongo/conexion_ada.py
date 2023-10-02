@@ -25,3 +25,9 @@ collection = db['users']
 
 #----------------------------------------------------------------
 
+#conexion local
+client_local = MongoClient("mongodb://localhost:27017/?retryWrites=true")
+
+#validamos si el cliente tiene la base de datos x
+productos = client_local["nameDB"]["nameCollection"]
+list(productos.find()) #leer datos
