@@ -106,4 +106,41 @@ db.miColeccion.aggregate([
   { $sort: { total: -1 } }
 ])
 
+----------------------------------------------------------------
+
+Ejemplo de Curso MongoDB - 8 operaciones de consulta
+db = empresa, collection = empleados con dos documentos que tienen los atributos:
+
+{
+"_id": ObjectId("60cece336644999a80947"),
+"nombres" : "Jaime",
+"apellidos" : "Code",
+"experiencia" : 7.0,
+"nacimiento" : ISODate("1991-03-27t05:00:00.000z"),
+"estado" : 1.0,
+"telefono" : ["958984", "885595"],
+"identidad" : {
+    "sexo" : "M",
+    "pais" : "PERU",
+    "cedula" : "111230088",
+    "estadoCivil" : "s"
+  }
+} 
+
+#alternativas de busquedas con el operador find
+db.getCollection('empleados').find({}) #salen todos los registros
+
+#buscar un valor en particular
+
+db.getCollection('empleados').find({"estado" : 1 }) #aquellos cullo estado sea 1
+
+db.getCollection('empleados').find({"estado" : {$in: [1,0] }}) #que tengan un estado entre 1 y 0, no busca en un rango de valores, busca la coincidencia exacta si es que esta alguno de estos valores en el atributo estado
+
+db.getCollection('empleados').find({"experiencia" : {$lt: 8 }}) #buscar por un criterio de menor a algun valor. Por atributo(gt, gte, lt, lte) lowar than, lower than equals, greater than equals
+
+#operador and para realizar una busqueda donde tenga dos atributos que no son excluyentes que si o si se deben coincidir para dar un resultado}
+db.getCollection('empleados').find({"estado" : 1, "experiencia" : {$lt: 8 }})
+
+#operador or 
+db.getCollection('empleados').find({ $or: [ {"estado" : 1, "experiencia" : {$lt: 8 }] })
  """
