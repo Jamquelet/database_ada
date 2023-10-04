@@ -55,7 +55,7 @@ Un usuario con solo nombre.
 
 #----------------------------------------------------------------#
 
-""" {"_comentario":"// /*js*/ //add database -> name_database -> add new collection -> producto -> add new document"} """
+""" add database -> name_database -> add new collection -> producto -> add new document"""
 
 {
     "nombre": "papitas",
@@ -96,3 +96,17 @@ R// MongoDB Community Server
  """
 
  #----------------------------------------------------------------#
+
+""" Quiz queries y agregaciones
+
+¿Cuál es el formato de los datos almacenados en MongoDB? # Documentos
+¿Cómo se accede a los datos en MongoDB? # a través de consultas en formato JSON
+¿Qué es una colección en MongoDB? # Un conjunto de documentos en MongoDB
+¿Cuáles son algunos de los operadores de consulta en MongoDB? # eq, ne, gt ,lt
+¿Qué son las agregaciones en MongoDB?
+R// Un conjunto de operaciones para filtrar, transformar y agrupar datos en una colección
+¿Cuál es una de las operaciones de agregación en MongoDB? # $sum
+¿Qué es la herramienta de agregación en MongoDB?
+R// Una herramienta para construir consultas de agregación en mongodb 
+
+"""

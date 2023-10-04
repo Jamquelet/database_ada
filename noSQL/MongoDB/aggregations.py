@@ -108,6 +108,8 @@ db.miColeccion.aggregate([
 
 ----------------------------------------------------------------
 
+OPERACIONES DE CONSULTA
+
 Ejemplo de Curso MongoDB - 8 operaciones de consulta
 db = empresa, collection = empleados con dos documentos que tienen los atributos:
 
@@ -142,5 +144,50 @@ db.getCollection('empleados').find({"experiencia" : {$lt: 8 }}) #buscar por un c
 db.getCollection('empleados').find({"estado" : 1, "experiencia" : {$lt: 8 }})
 
 #operador or 
-db.getCollection('empleados').find({ $or: [ {"estado" : 1, "experiencia" : {$lt: 8 }] })
+db.getCollection('empleados').find({ $or: [ {"estado" : 0}, {"experiencia" : {$lt: 8 }}] }) # un criterio o el otro, si coinciden los dos muestra los dos
+
+#Operación AND y OR
+db.getCollection('empleados').find({ "nombres":"Jaime", $or: [ {"estado" : 0}, {"experiencia" : {$lt: 8 }}] }) # el nombre seria mandatorio, el or puede o no se puede resolver
+
+#busqueda en arreglos
+db.getCollection('empleados').find({ "telefonos":["958984", "885595"] }) #regresa el elemento que tiene ese criterio, si solo de deja un telefono no da ninguna coincidencia, busca con exactitud todo el contenido del atributo, si no no lo resuelve
+
+#$all
+db.getCollection('empleados').find({ "telefonos":{$all: ["958984"] }}) #si lo resuelve, all busca alguno de esos elementos dentro de cualquier posicion del arreglo
+
+#busqueda anidada
+db.getCollection('empleados').find({ "identidad.sexo": "M" }) #buscar si la identidad del documento es masculino
+
+db.getCollection('empleados').find({ "identidad.pais": "PERU" }) 
+
+
+----------------------------------------------------------------
+
+OPERACIONES DE AGREGACIÓN
+
+#count()
+db.getCollection('empleados').count() #cantidad de documentos en una collection
+
+#distinct()
+db.getCollection('empleados').distinct("experiencia") # atributo que queremos hacer esa distincion, los repetidos se cuenta como uno solo
+
+# $ para hacer referencia al atributo 
+
+# aggregate $group
+db.getCollection('empleados').aggregate([{$group : {_id : "$experiencia", x : {$sum : 1 }}} ]) #contar los empleados agrupados por su experiencia
+
+#$avg | average
+db.getCollection('empleados').aggregate([{$group : {_id : "$estado", x : {$avg : "$experiencia" }}} ]) # calcular el promedio de experiencias agrupados por estado
+
+# $max | maximun
+db.getCollection('empleados').aggregate([{$group : {_id : "$estado", x : {$max : "$experiencia" }}} ]) # calcular la experiencia maxima agrupado por el estado
+
+# $min | minumun
+db.getCollection('empleados').aggregate([{$group : {_id : "$estado", x : {$min : "$experiencia" }}} ]) #calcular el minimo 
+
+# $first # devuelve ese atributo pero de la primera coincidencia del conjunto de resultados 
+db.getCollection('empleados').aggregate([{$group : {_id : "$estado", x : {$first : "$telefonos" }}} ]) # segun algun criterio que quiera agrupar, por ej por el estado quisiera extraer o devolver otro atributo por ej los telefonos
+
+# $last # finales
+db.getCollection('empleados').aggregate([{$group : {_id : "$estado", x : {$last : "$telefonos" }}} ])
  """
