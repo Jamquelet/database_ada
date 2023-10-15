@@ -9,6 +9,8 @@ class TruncDate(Function):
 
 #Número total de compras realizadas por cada cliente (Retornar como tuplas (nombre,n_compras))
     """
+    SQL
+    OPCION 1
     select c.nombre, count(v.id) as n_compras
     from ventas v
     join clientes c on v.cliente_id = c.id
@@ -17,10 +19,10 @@ class TruncDate(Function):
 async def solucion_1():
     # Implementa tu solución aquí
     res = await (
-        Venta.annotate(n_compras=Count("id"))
+        Venta.annotate(n_compras=Count("id")) #annotate es el alias
     
     .group_by("cliente_id")
-    .values_list("cliente__nombre", "n_compras"))
+    .values_list("cliente__nombre", "n_compras"))#values_list hace que el resultado se retorne como tupla de valores. doble raya baja hace el join referencia otra tabla
     return res
     
     raise NotImplementedError()
